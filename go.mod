@@ -1,6 +1,6 @@
 module github.com/opsgin/opsgin
 
-go 1.19
+go 1.21
 
 require (
 	github.com/opsgenie/opsgenie-go-sdk-v2 v1.2.12

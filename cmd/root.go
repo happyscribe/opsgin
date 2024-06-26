@@ -120,14 +120,11 @@ func (s *Schedules) configGetSchedules() error {
 
 		switch s.mode {
 		case "daemon":
-			data := viper.GetStringMapString(fmt.Sprintf("%s.opsgenie", item))
-			schedule.name = data["schedule"]
-			schedule.og_api_key = data["api_key"]
-
-			data = viper.GetStringMapString(fmt.Sprintf("%s.slack", item))
-			schedule.api_key = data["api_key"]
-			schedule.app_key = data["app_key"]
-			schedule.filter = data["user_group"]
+			schedule.api_key = viper.GetString(fmt.Sprintf("%s.slack.api_key", item))
+			schedule.app_key = viper.GetString(fmt.Sprintf("%s.slack.app_key", item))
+			schedule.filter = viper.GetString(fmt.Sprintf("%s.slack.user_group", item))
+			schedule.name = viper.GetString(fmt.Sprintf("%s.opsgenie.schedule", item))
+			schedule.og_api_key = viper.GetString(fmt.Sprintf("%s.opsgenie.api_key", item))
 		case "sync":
 			data := viper.GetStringSlice(item)
 
