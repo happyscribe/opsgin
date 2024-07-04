@@ -16,4 +16,6 @@ FROM alpine:3.15
 
 COPY --from=build /app/build/package /
 
+COPY config.yaml /opt/opsgin/config.yaml
+
 ENTRYPOINT ["/usr/local/sbin/opsgin"]
